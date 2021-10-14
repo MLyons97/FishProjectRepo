@@ -1,2 +1,1 @@
-# FishProjectRepo
-Fish Project
+# FishProjectRepoFish Project#Things to do:This listSet up environment:	- App folder	- Test folder	- Maybe a definitions and an imiPull things from S3Merge things from S3Calculate things as needed?Pray?
