@@ -15,6 +15,8 @@ def test_pull_a_df():
 test_manipulator = manip.DataManipulator()
 
 
+# From hereon out the tests look messy as they require their own dataframes to test against something known
+# definitely not a stress test but that can come when there's more fish
 def test_summing_two_dfs():
     test_data1 = [['a', 1], ['b', 2], ['c', 3]]
     test_df1 = pd.DataFrame(test_data1)
@@ -28,12 +30,8 @@ def test_summing_two_dfs():
 def test_avg_finder():
     df = pd.DataFrame([['a', 3], ['a', 6], ['a', 9], ['b', 5], ['b', 7], ['b', 9]], columns=["Species", "Number"])
     new_df = test_manipulator.avg_finder(df)
-    new_df = new_df.reset_index(drop=False)
-    print("new_df is ")
-    print(new_df)
+    new_df = new_df.reset_index(drop=False)     # Adds an index so the average matches the reference
     reference_df = pd.DataFrame([['a', 6.0], ['b', 7.0]], columns=["Species", "Number"])
-    print("reference_df is: ")
-    print(reference_df)
     pd.testing.assert_frame_equal(new_df, reference_df)
 
 
@@ -41,4 +39,4 @@ def test_df_to_dict():
     df = pd.DataFrame()
     assert type(test_manipulator.df_to_dict(df)) == dict
 
-# I have no clue how to test an upload
+# I have no clue how to test an upload and google didn't give me much :(
