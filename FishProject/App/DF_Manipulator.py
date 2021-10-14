@@ -1,6 +1,5 @@
-import FishProject.App.PullingFromS3 as pulling
-
 import pandas as pd
+
 
 class DataManipulator:
     def __init__(self):
@@ -12,8 +11,9 @@ class DataManipulator:
         returning_df = pd.concat(df_list)
         return returning_df
 
+    @staticmethod
+    def df_to_dict(dataframe: pd.DataFrame):
+        return dataframe.to_dict()
+
     def avg_finder(self, dataframe: pd.DataFrame):
-        pass
-
-
-test_manipulator = DataManipulator()
+        return dataframe.groupby('Species').mean()

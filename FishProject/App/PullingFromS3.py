@@ -1,10 +1,10 @@
-import pandas
+import pandas as pd
 import boto3
-import pprint
 
 import FishProject.config_manager as conf
 
-class Pulling_Class():
+
+class PullingClass:
     def __init__(self):
         self.__s3_client = boto3.client('s3')
         self.__fish_db = conf.TARTARE + '.csv'
@@ -26,6 +26,6 @@ class Pulling_Class():
 
     def pull_data_set(self, bucket_name: str, key: str):
         bucket_contents = self.get_client.get_object(Bucket=bucket_name, Key=key)
-        csv_body = pandas.read_csv(bucket_contents["Body"])
+        csv_body = pd.read_csv(bucket_contents["Body"])
         return csv_body
 
